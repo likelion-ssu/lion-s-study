@@ -1,9 +1,11 @@
 .overlay {
-  width: 100vw;
-  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  width: 100vw;
+  height: 100vh;
+
   background: rgba(0, 0, 0, 0.4);
 }
 
@@ -12,31 +14,35 @@
   flex-direction: column;
   justify-content: center;
   gap: 3rem;
+  flex-shrink: 0;
+
   width: 128rem;
   height: 68rem;
   padding: 3rem;
-  flex-shrink: 0;
 
   border-radius: 20px;
   border: 1.5px solid rgba(255, 255, 255, 0.1);
+
   background: var(--90, #1a1a1a);
 }
 
 .topSection {
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  width: 100%;
 }
 
 .topSection > p {
   color: var(--Basic-White, #fff);
-  font-family: Pretendard;
+
   font-size: 1.4rem;
   font-style: normal;
   font-weight: 600;
-  line-height: 22px; /* 157.143% */
+  line-height: 22px;
 }
+
 .bodySection {
   display: flex;
   justify-content: center;
@@ -50,21 +56,24 @@
 }
 
 .buttonSection {
-  width: 100%;
   display: flex;
   justify-content: end;
+
+  width: 100%;
 }
 
 .buttonSection > button {
   display: flex;
   align-items: center;
   justify-content: center;
+
   width: 7.8rem;
   height: 2.8rem;
   padding: 3.294px 11.529px;
 
   border-radius: 25px;
   border: 0.824px solid var(--60, #585858);
+
   background: var(--Basic-White, #fff);
 
   cursor: pointer;

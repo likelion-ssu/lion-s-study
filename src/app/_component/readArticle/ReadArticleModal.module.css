@@ -1,0 +1,90 @@
+.overlay {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  width: 100vw;
+  height: 100vh;
+  padding-top: 13rem;
+
+  background: rgba(0, 0, 0, 0.4);
+
+  overflow-y: auto;
+}
+
+.modalBox {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+
+  width: 78rem;
+  height: auto;
+  min-height: 60rem;
+  padding: 3rem 4rem;
+  margin-bottom: 10rem;
+  flex-shrink: 0;
+  border-radius: 20px;
+  border: 1.5px solid var(--10, #c6c6c6);
+
+  background: var(--BG_White, #f3f5f7);
+}
+
+.topSection {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+
+  width: 100%;
+}
+
+.topSection h1 {
+  color: var(--60, #585858);
+
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.topSection h2 {
+  color: var(--60, #585858);
+  text-align: right;
+
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+}
+
+.bodySection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  color: var(--Basic-Black, #000);
+
+  gap: 1rem;
+  margin: 0 1rem;
+}
+
+.bodySection h1 {
+  font-size: 2.2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.bodySection p {
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.deleteIc {
+  cursor: pointer;
+}
+
+.deleteIc > path {
+  stroke: #000000;
+}
