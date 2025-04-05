@@ -1,3 +1,12 @@
+import LoginButton from "./_component/login/LoginButton";
+import LoginModal from "./_component/login/LoginModal";
+
 export default function Home() {
-  return <div>Main 페이지</div>;
+  return (
+    <div>
+      <LoginModal />
+      <LoginButton />
+      <p> Main 페이지</p>
+    </div>
+  );
 }

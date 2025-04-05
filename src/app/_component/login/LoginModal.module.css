@@ -1,0 +1,39 @@
+.overlay {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100vw;
+  height: 100vh;
+
+  background: rgba(0, 0, 0, 0.4);
+
+  z-index: 1;
+}
+
+.modal {
+  position: relative;
+  display: flex;
+  padding: 2.4rem;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 20px;
+  border: 1.302px solid rgba(255, 255, 255, 0.1);
+  background: #1a1a1a;
+  gap: 1.8rem;
+}
+
+.title {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: #fff;
+  font-family: Pretendard;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 2.2rem;
+}
