@@ -50,6 +50,10 @@ a {
   text-decoration: none;
 }
 
+.modal-root {
+  position: absolute;
+}
+
 /* 
 @media (prefers-color-scheme: dark) {
   html {

@@ -1,0 +1,25 @@
+.btn {
+  display: flex;
+  padding: 1.2rem 2.6rem;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
+    linear-gradient(96deg, #6df5ff -0.2%, #8079b4 96.8%);
+
+  color: #fff;
+
+  font-family: Pretendard;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #f3f4f6;
+}

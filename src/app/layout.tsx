@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./styles/globals.css";
 import "./styles/reset.css";
+import Modal from "./_component/modal/Modal";
 
 export const metadata: Metadata = {
   title: "사자의 서재",
@@ -14,7 +15,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" style={{ fontFamily: "Pretendard, sans-serif" }}>
-      <body>{children}</body>
+      <body>
+        <div id="modal-root" />
+        <Modal />
+        {children}
+      </body>
     </html>
   );
 }

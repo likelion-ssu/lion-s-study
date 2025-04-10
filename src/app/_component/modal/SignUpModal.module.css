@@ -1,0 +1,160 @@
+.modal {
+  position: relative;
+  display: flex;
+  padding: 2.4rem;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 20px;
+  border: 1.302px solid rgba(255, 255, 255, 0.1);
+  background: #1a1a1a;
+  gap: 1.8rem;
+  width: 24.6rem;
+  min-height: 33.8rem;
+}
+
+.title {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title p {
+  color: #fff;
+  font-family: Pretendard;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 2.2rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  width: 100%;
+}
+
+.form > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.formLabel {
+  color: #fff;
+  font-family: Pretendard;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2rem;
+}
+
+.form input {
+  width: 100%;
+  height: 3.2rem;
+  padding: 0.8rem 1.2rem;
+  border-radius: 4px;
+  border: 1px solid #c6c6c6;
+  background: #fff;
+  color: #000;
+  font-family: Pretendard;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2rem;
+  outline: none;
+}
+
+.yearWrapper {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.yearInput {
+  width: 6.5rem !important;
+}
+
+.selectWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.selectBox {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 3.2rem;
+  padding: 0.8rem 1.2rem;
+  border-radius: 4px;
+  border: 1px solid #c6c6c6;
+  background: #fff;
+  color: #9a9a9a;
+  font-family: Pretendard;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2rem;
+  cursor: pointer;
+}
+
+.optionList {
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 20rem;
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid #c6c6c6;
+  border-radius: 4px;
+  margin-top: 0.4rem;
+  z-index: 2;
+}
+
+.option {
+  padding: 0.8rem 1.2rem;
+  color: #000;
+  font-family: Pretendard;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2rem;
+  cursor: pointer;
+}
+
+.option:hover {
+  background: rgba(28, 255, 255, 0.1);
+}
+
+.btnWrapper {
+  align-items: end;
+}
+
+.btnWrapper button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.491rem;
+  background-color: transparent;
+  border-radius: 24.551px;
+  border: 0.818px solid #585858;
+  width: 6.8rem;
+  height: 2.8rem;
+
+  color: #c6c6c6;
+  font-family: Pretendard;
+  font-size: 1.1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.4rem;
+
+  transition: all 0.2s ease-in-out;
+}
+
+.btnWrapper button.active {
+  background-color: #fff;
+  border-color: #585858;
+  color: #1a1a1a;
+  cursor: pointer;
+}
