@@ -7,16 +7,17 @@ import Image from "next/image";
 import { useStudyroomIdStore } from "@/store/useStudyroomIdStore";
 import { useArticles } from "@/hooks/useArticles";
 import { useUserStore } from "@/store/useUserStore";
+import { useModalStore } from "@/store/useModalStore";
 import { useRouter } from "next/navigation";
 import { formatDate } from "@/utils/formatDate";
 
-import { ArticleItem as ArticleItemProp } from "@/types/studyRoomDetails/article";
+import { ArticleItem as ArticleItemProp, Tag } from "@/types/studyRoomDetails/article";
 import { StudyroomItemButtonHandler } from "@/types/studyRoomDetails/itemClickHandler";
 import { StudyroomItemGenericHandler } from "@/types/studyRoomDetails/itemClickHandler";
 
-import { useModalStore } from "@/store/useModalStore";
 import DeleteContentModal from "./modal/DeleteContentModal";
-import { useState } from "react";
+import TagItem from "./TagItem";
+import { useEffect, useState } from "react";
 
 // 예시 이미지 임시 사용
 import ExImg from "../../../assets/image/default_thumbnail.png";
@@ -24,6 +25,7 @@ import ExImg from "../../../assets/image/default_thumbnail.png";
 import BabyLionImg from "../../../assets/image/babyLion.png";
 import BigLionImg from "../../../assets/image/bigLion.png";
 import Loading from "@/app/loading";
+import { useTagHandler } from "@/hooks/useTagHandler";
 
 interface ArticeItemInterface {
   articleProps: ArticleItemProp;
@@ -31,9 +33,18 @@ interface ArticeItemInterface {
   handleUpdate: StudyroomItemButtonHandler;
   handleRead: StudyroomItemGenericHandler;
   isMyArticle: boolean;
+  commonTags: Tag[];
 }
 
-const ArticleItem = ({ articleProps, handleRead, isMyArticle }: ArticeItemInterface) => {
+const ArticleItem = ({
+  articleProps,
+  handleRead,
+  isMyArticle,
+  commonTags
+}: ArticeItemInterface) => {
+  const tagMap = new Map(commonTags.map(tag => [tag.id, tag]));
+  console.log(articleProps);
+
   return (
     <div className={style.articleSingleContainer} onClick={e => handleRead(e, articleProps.id)}>
       <div className={style.imgWrapper}>
@@ -45,34 +56,51 @@ const ArticleItem = ({ articleProps, handleRead, isMyArticle }: ArticeItemInterf
         />
       </div>
       <div className={style.mainContentWrapper}>
-        <div className={style.titleDateWrapper}>
-          {/* space-between */}
-          <div className={style.articleTitle}>{articleProps.title}</div>
-          <div className={commonStyles.contentInfo} id={commonStyles.infoContent}>
-            {formatDate(articleProps.createdAt)}
-          </div>
-        </div>
-        {/* 프로필 정보 */}
-        <div className={commonStyles.subContainer} id={style.profileContainer}>
-          <Image
-            className={commonStyles.profileImgContainer}
-            src={articleProps.creatorYear == 13 ? BabyLionImg : BigLionImg}
-            alt="프로필 사진"
-            unoptimized={true}
-            style={{ width: 28, height: 28 }}
-          ></Image>
-          <div className={commonStyles.subTextContainer} id={style.creatorInfoContainer}>
-            <div className={commonStyles.nameContainer} id={style.fontSize12}>
-              {articleProps.creatorName}
+        <div className={style.topContainer}>
+          {/* 날짜 & 프로필 */}
+          <div className={style.titleDateWrapper}>
+            {/* space-between */}
+            <div className={style.articleTitle} id={commonStyles.overflowEllipsisLine1}>
+              {articleProps.title}
             </div>
-            <span id={style.fontSize08}>{articleProps.creatorYear}기</span>
+            <div className={commonStyles.contentInfo} id={commonStyles.infoContent}>
+              {formatDate(articleProps.createdAt)}
+            </div>
+          </div>
+          {/* 프로필 정보 */}
+          <div className={commonStyles.subContainer} id={style.profileContainer}>
+            <Image
+              className={commonStyles.profileImgContainer}
+              src={articleProps.creatorYear == 13 ? BabyLionImg : BigLionImg}
+              alt="프로필 사진"
+              unoptimized={true}
+              style={{ width: 28, height: 28 }}
+            ></Image>
+            <div className={commonStyles.subTextContainer} id={style.creatorInfoContainer}>
+              <div className={commonStyles.nameContainer} id={style.fontSize12}>
+                {articleProps.creatorName}
+              </div>
+              <span id={style.fontSize08}>{articleProps.creatorYear}기</span>
+            </div>
           </div>
         </div>
 
-        {/* 태그 추가 예정 */}
-        <div className={style.contentContainer}>
-          <div className={style.content} id={commonStyles.overflowEllipsisLine3}>
-            {articleProps.content}
+        <div className={style.bottomContainer}>
+          <div className={style.tagContainer}>
+            {articleProps.tags &&
+              articleProps.tags.map(tagId => {
+                const matchedTag = tagMap.get(tagId);
+                return (
+                  matchedTag && (
+                    <TagItem key={tagId} name={matchedTag.name} color={matchedTag.color} />
+                  )
+                );
+              })}
+          </div>
+          <div className={style.contentContainer}>
+            <div className={style.content} id={commonStyles.overflowEllipsisLine3}>
+              {articleProps.content}
+            </div>
           </div>
         </div>
       </div>
@@ -87,9 +115,11 @@ const Article = () => {
   const id = useStudyroomIdStore(state => state.studyroomId);
   const { articles } = useArticles(id ?? "");
   const open = useModalStore(state => state.open);
+  const { fetchAllCommonTags } = useTagHandler();
 
   const ITEMS_PER_PAGE = 5;
   const [currentPage, setCurrentPage] = useState(1);
+  const [commonTags, setCommonTags] = useState<Tag[]>([]);
 
   if (!articles)
     return (
@@ -130,6 +160,15 @@ const Article = () => {
     router.push(`/studyroom/${id}/article/${articleId}`);
   };
 
+  useEffect(() => {
+    const loadTags = async () => {
+      const fetchedTags = await fetchAllCommonTags();
+      setCommonTags(fetchedTags);
+    };
+
+    loadTags();
+  }, []);
+
   return (
     <div className={style.articleContainer}>
       <div className={commonStyles.titleContainer}>
@@ -152,6 +191,7 @@ const Article = () => {
               handleUpdate={handleUpdate}
               handleRead={handleRead}
               isMyArticle={item.creatorId === user.uid}
+              commonTags={commonTags}
             />
           ))
         ) : (

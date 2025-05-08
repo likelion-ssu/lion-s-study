@@ -1,0 +1,22 @@
+.tagContainer {
+  display: flex;
+  height: 2rem;
+  padding: 0.6rem 1rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.275rem;
+
+  border-radius: 0.6874rem;
+  border: 0.687px solid #e6e6e6;
+  background: var(--Basic-White, #fff);
+}
+
+.tagName {
+  color: var(--90, #1a1a1a);
+
+  font-family: Pretendard;
+  font-size: 0.8249rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.3749rem; /* 166.667% */
+}

@@ -32,7 +32,8 @@ export function useArticles(studyroomId: string) {
           creatorId: data.creatorId,
           createdAt: data.createdAt,
           creatorName: data.creatorName,
-          creatorYear: data.creatorYear
+          creatorYear: data.creatorYear,
+          tags: data.tags
         };
       });
 

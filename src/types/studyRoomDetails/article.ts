@@ -1,3 +1,9 @@
+export type Tag = {
+  id: string;
+  name: string;
+  color: string;
+};
+
 export type ArticleItemInput = {
   title: string;
   content: string;
@@ -14,4 +20,5 @@ export type ArticleItem = {
   createdAt: any;
   creatorName: string;
   creatorYear: number;
+  tags: string[];
 };
