@@ -45,36 +45,45 @@ const ArticleItem = ({ articleProps, handleRead, isMyArticle }: ArticeItemInterf
         />
       </div>
       <div className={style.mainContentWrapper}>
-        <div className={style.titleDateWrapper}>
-          {/* space-between */}
-          <div className={style.articleTitle}>{articleProps.title}</div>
-          <div className={commonStyles.contentInfo} id={commonStyles.infoContent}>
-            {formatDate(articleProps.createdAt)}
-          </div>
-        </div>
-        {/* 프로필 정보 */}
-        <div className={commonStyles.subContainer} id={style.profileContainer}>
-          <Image
-            className={commonStyles.profileImgContainer}
-            src={articleProps.creatorYear == 13 ? BabyLionImg : BigLionImg}
-            alt="프로필 사진"
-            unoptimized={true}
-            style={{ width: 28, height: 28 }}
-          ></Image>
-          <div className={commonStyles.subTextContainer} id={style.creatorInfoContainer}>
-            <div className={commonStyles.nameContainer} id={style.fontSize12}>
-              {articleProps.creatorName}
+        <div className={style.topContainer}>
+          {/* 날짜 & 프로필 */}
+          <div className={style.titleDateWrapper}>
+            {/* space-between */}
+            <div className={style.articleTitle} id={commonStyles.overflowEllipsisLine1}>
+              {articleProps.title}
             </div>
-            <span id={style.fontSize08}>{articleProps.creatorYear}기</span>
+            <div className={commonStyles.contentInfo} id={commonStyles.infoContent}>
+              {formatDate(articleProps.createdAt)}
+            </div>
+          </div>
+          {/* 프로필 정보 */}
+          <div className={commonStyles.subContainer} id={style.profileContainer}>
+            <Image
+              className={commonStyles.profileImgContainer}
+              src={articleProps.creatorYear == 13 ? BabyLionImg : BigLionImg}
+              alt="프로필 사진"
+              unoptimized={true}
+              style={{ width: 28, height: 28 }}
+            ></Image>
+            <div className={commonStyles.subTextContainer} id={style.creatorInfoContainer}>
+              <div className={commonStyles.nameContainer} id={style.fontSize12}>
+                {articleProps.creatorName}
+              </div>
+              <span id={style.fontSize08}>{articleProps.creatorYear}기</span>
+            </div>
           </div>
         </div>
 
-        {/* 태그 추가 예정 */}
-        <div className={style.contentContainer}>
-          <div className={style.content} id={commonStyles.overflowEllipsisLine3}>
-            {articleProps.content}
+        <div className={style.bottomContainer}>
+          {/* 태그 & content */}
+          <div>{/* 태그 */}</div>
+          <div className={style.contentContainer}>
+            <div className={style.content} id={commonStyles.overflowEllipsisLine3}>
+              {articleProps.content}
+            </div>
           </div>
         </div>
+        {/* 태그 추가 예정 */}
       </div>
     </div>
   );

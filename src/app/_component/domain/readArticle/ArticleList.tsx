@@ -89,7 +89,7 @@ const ArticleList = ({ articleId, studyroomId }: ArticleListProps) => {
 
   // // 아티클을 클릭한 경우
   const handleClick = (clickedArticleId: string) => {
-    router.push(`/studyroom/${studyroomId}/article/${clickedArticleId}`);
+    router.replace(`/studyroom/${studyroomId}/article/${clickedArticleId}`);
   };
 
   const handleBack = () => {
